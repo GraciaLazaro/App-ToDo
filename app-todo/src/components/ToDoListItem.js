@@ -1,24 +1,24 @@
-import React, { useState } from "react";
-import ToDoForm from "./ToDoForm";
-import { RiCloseCircleLine } from "react-icons/ri";
-import { TiEdit } from "react-icons/ti";
+import React, { useState } from 'react'
+import ToDoForm from './ToDoForm'
+import { RiCloseCircleLine } from 'react-icons/ri'
+import { TiEdit } from 'react-icons/ti'
 
-function ToDo({ toDos, removeToDo, updateToDo }) {
+function ToDo ({ toDos, removeToDo, updateToDo }) {
   const [edit, setEdit] = useState({
     id: null,
-    valor: "",
-  });
+    valor: ''
+  })
 
   const submitUpdate = (value) => {
-    updateToDo(edit.id, value);
+    updateToDo(edit.id, value)
     setEdit({
       id: null,
-      value: "",
-    });
-  };
+      value: ''
+    })
+  }
 
   if (edit.id) {
-    return <ToDoForm edit={edit} onSubmit={submitUpdate} />;
+    return <ToDoForm edit={edit} onSubmit={submitUpdate} />
   }
 
   return toDos.map((toDo, index) => (
@@ -33,7 +33,7 @@ function ToDo({ toDos, removeToDo, updateToDo }) {
         <TiEdit onClick={() => setEdit({ id: toDo.id, value: toDo.text })} />
       </div>
     </div>
-  ));
+  ))
 }
 
-export default ToDo;
+export default ToDo

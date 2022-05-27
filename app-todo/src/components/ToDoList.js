@@ -1,40 +1,40 @@
-import React, { useState } from "react";
-import ToDoForm from "./ToDoForm";
-import ToDoListItem from "./ToDoListItem";
+import React, { useState } from 'react'
+import ToDoForm from './ToDoForm'
+import ToDoListItem from './ToDoListItem'
 
-function ToDoList() {
-  const [toDos, setToDos] = useState([]);
+function ToDoList () {
+  const [toDos, setToDos] = useState([])
 
   const addToDo = (toDo) => {
     if (!toDo.text || /^\s*$/.test(toDo.test)) {
-      return;
+      return
     }
-    const newToDos = [toDo, ...toDos];
+    const newToDos = [toDo, ...toDos]
 
-    setToDos(newToDos);
-  };
+    setToDos(newToDos)
+  }
 
   const updateToDo = (toDoId, newValue) => {
     if (!newValue.text || /^\s*$/.test(newValue.text)) {
-      return;
+      return
     }
     setToDos((prev) =>
       prev.map((item) => (item.id === toDoId ? newValue : item))
-    );
-  };
+    )
+  }
 
   const removeToDo = (id) => {
-    const removeArr = [...toDos].filter((toDo) => toDo.id !== id);
-    setToDos(removeArr);
-  };
+    const removeArr = [...toDos].filter((toDo) => toDo.id !== id)
+    setToDos(removeArr)
+  }
 
   return (
     <div>
-      <h1> WHAT'S THE PLAN FOR TODAY?</h1>
+      <h1> THINGS TO DO </h1>
       <ToDoForm onSubmit={addToDo} />
       <ToDoListItem toDos={toDos} removeToDo={removeToDo} updateToDo={updateToDo} />
     </div>
-  );
+  )
 }
 
-export default ToDoList;
+export default ToDoList
